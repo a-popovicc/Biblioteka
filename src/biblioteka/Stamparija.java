@@ -1,5 +1,7 @@
 package biblioteka;
 
+import java.util.Objects;
+
 public class Stamparija {
     private int id;
     private String name;
@@ -27,5 +29,16 @@ public class Stamparija {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof Stamparija that)) return false;
+        return id == that.id && Objects.equals(name, that.name) && Objects.equals(location, that.location);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, location);
     }
 }
